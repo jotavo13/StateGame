@@ -1,5 +1,5 @@
 import random
-def capitalsQuiz(totalcorrect, totalincorrect, states):
+def capitalsQuiz(totalcorrect, totalwrong, states):
     print("Welcome to the Capitals Quiz!")
 
     if(states == []):
@@ -161,9 +161,9 @@ def capitalsQuiz(totalcorrect, totalincorrect, states):
     for state in states:
         print(f'What is the capital of this state: {state["name"]}')
         if(("correct" in state) == False):
-            state["correct"] = 0
-        if(("incorrect" in state) == False):
-            state["incorrect"] = 0
+            state["RIGHT"] = 0
+        if(("wrong" in state) == False):
+            state["wrong"] = 0
 
 
 
@@ -173,22 +173,22 @@ def capitalsQuiz(totalcorrect, totalincorrect, states):
             totalcorrect += 1
             state["correct"] += 1
             print("Correct!")
-            print(f'You have gotten this state right {state["correct"]} times and wrong {state["incorrect"]} times!')
-            print(f'Total Correct Answers: {totalcorrect} Total Incorrect Answers: {totalincorrect}')
+            print(f'You have gotten this state right {state["correct"]} times and wrong {state["wrong"]} times!')
+            print(f'Total Correct Answers: {totalcorrect} Total wrong Answers: {totalwrong}')
 
         else:
-            totalincorrect += 1
-            state["incorrect"] += 1
-            print("Incorrect :(")
-            print(f'You have gotten this state right {state["correct"]} times and wrong {state["incorrect"]} times!')
-            print(f'Total Correct Answers: {totalcorrect} Total Incorrect Answers: {totalincorrect}')
+            totalwrong += 1
+            state["wrong"] += 1
+            print("wrong :(")
+            print(f'You have gotten this state right {state["correct"]} times and wrong {state["wrong"]} times!')
+            print(f'Total Correct Answers: {totalcorrect} Total wrong Answers: {totalwrong}')
 
-    print("Would you like to play again?")
+    print("Do you want to play again?")
     userInput = input()
     if(userInput == "yes"):
-        capitalsQuiz(totalcorrect, totalincorrect, states)
+        capitalsQuiz(totalcorrect, totalwrong, states)
     else:
-        print(f'Thanks for playing! Total Scores: --Correct: {totalcorrect}-- --Incorrect: {totalincorrect}--')
+        print(f'Thank you for playing! Here is your scores: Total Scores: --Correct: {totalcorrect}-- --wrong: {totalwrong}--')
 
 
 
